@@ -6,10 +6,22 @@
 
 .guest{font:600 24px/1.5 Tahoma,"Vazirmatn","Segoe UI",Arial,sans-serif;color:#f2dfb4;text-align:center;margin:-4px 0 10px;text-shadow:0 2px 10px #0008}.guest[hidden]{display:none}
 
+
+.countdown{margin:18px 0 0;text-align:center}
+.cd-title{font:10px Arial,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#d6b979;margin-bottom:10px}
+.cd-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;direction:ltr}
+.cd-box{border:1px solid #a77b43;background:#ffffff0d;border-radius:3px;padding:10px 4px 8px}
+.cd-num{display:block;font:600 28px/1.1 Georgia,serif;color:#f2dfb4;font-variant-numeric:tabular-nums}
+.cd-lbl{display:block;font:9px/1.5 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#cbb39a;margin-top:4px}
+.cd-msg{font:600 18px/1.6 Tahoma,Arial,sans-serif;color:#f2dfb4;padding:10px 0}
+.cal-title{font:10px Arial,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:#d6b979;text-align:center;margin-top:20px}
 </style></head><body><main class="stage" id="stage"><div class="glow"></div><div class="eyebrow">An invitation · A special milestone</div>
 <div class="guest" id="guest" dir="rtl" hidden></div>
 <div class="envelope-wrap" id="envelope" role="button" tabindex="0" aria-label="Open birthday invitation"><div class="envelope"><div class="card-peek"><img src="invitation.jpg" alt="Babak's birthday invitation card"></div><div class="env-side"></div><div class="env-side right"></div><div class="env-front"></div><div class="flap"></div><div class="seal">B</div></div></div><div class="tap" id="tap">Tap to open your invitation</div>
 <section class="card-full" id="cardFull" aria-label="Birthday invitation details"><div class="card-frame"><img src="invitation.jpg" alt="Forty and Fabulous — Babak's 40th Birthday. 10 Aban 1405 at 7 PM, Velenjak, Tehran."></div>
+<div class="countdown" id="countdown" dir="rtl"><div class="cd-title">Countdown · شمارش معکوس</div><div class="cd-grid"><div class="cd-box"><span class="cd-num" id="cd-d">--</span><span class="cd-lbl">Days · روز</span></div><div class="cd-box"><span class="cd-num" id="cd-h">--</span><span class="cd-lbl">Hours · ساعت</span></div><div class="cd-box"><span class="cd-num" id="cd-m">--</span><span class="cd-lbl">Min · دقیقه</span></div><div class="cd-box"><span class="cd-num" id="cd-s">--</span><span class="cd-lbl">Sec · ثانیه</span></div></div></div>
+<div class="cal-title">Save the date</div>
+<div class="actions"><a class="action" href="babak-40-birthday.ics" download="Babak-40th-Birthday.ics">📅 Add to Calendar</a><a class="action secondary" id="gcal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Babak%27s%2040th%20Birthday%20%C2%B7%20Forty%20%26%20Fabulous&dates=20261101T153000Z%2F20261101T200000Z&location=Velenjak%2C%20Tehran&details=%D8%AA%D9%88%D9%84%D8%AF%20%DB%B4%DB%B0%20%D8%B3%D8%A7%D9%84%DA%AF%DB%8C%20%D8%A8%D8%A7%D8%A8%DA%A9%20%E2%80%94%20%DB%B1%DB%B0%20%D8%A2%D8%A8%D8%A7%D9%86%20%DB%B1%DB%B4%DB%B0%DB%B5%0Ahttps%3A%2F%2Fnshn.ir%2FrbvfFSYxODaZ">Google Calendar ↗</a></div>
 <div class="actions"><a class="action" href="https://nshn.ir/rbvfFSYxODaZ" target="_blank" rel="noopener">Open venue in Neshan ↗</a><button class="action secondary" id="musicBtn" type="button">♫ Play lounge jazz</button><button class="action secondary" id="againBtn" type="button">Close card</button></div>
 <p class="rsvp" dir="rtl">بی‌صبرانه منتظر حضورت هستم ❤️<br><span>اما اگر امکان حضور در این شب ویژه را ندارید، لطفاً از طریق <a href="https://wa.me/qr/4YUAFUC2MGG6I1" target="_blank" rel="noopener">واتس‌اپ</a> به من اطلاع دهید. ممنونم.</span></p><div class="actions"><a class="action" href="https://wa.me/qr/4YUAFUC2MGG6I1" target="_blank" rel="noopener">WhatsApp RSVP ↗</a></div><div class="note">The music starts automatically when you open the envelope.</div></section><div class="footer">LET'S CELEBRATE FOUR DECADES OF GOOD STORIES</div><audio autoplay loop playsinline id="jazz" src="birthday-music.mp3" preload="auto" loop></audio></main>
 <script>
@@ -48,4 +60,22 @@ musicBtn.addEventListener('click',async()=>{
 jazz.addEventListener('play',setBtn);jazz.addEventListener('pause',setBtn);
 document.addEventListener('visibilitychange',()=>{if(document.hidden)jazz.pause();else if(!userPaused&&opened)startMusic()});
 
+
+/* ===== Countdown to 10 Aban 1405 (1 Nov 2026), 19:00 Tehran time (UTC+3:30) ===== */
+(function(){
+  const START=Date.UTC(2026,10,1,15,30,0), END=Date.UTC(2026,10,1,20,0,0);
+  const box=document.getElementById('countdown'); if(!box)return;
+  const p=n=>String(n).padStart(2,'0');
+  function tick(){
+    const now=Date.now(), d=START-now;
+    if(now>=END){box.innerHTML='<div class="cd-msg">ممنون که این شب را با ما جشن گرفتید ❤️<br><small>Thank you for celebrating with us</small></div>';return}
+    if(now>=START){box.innerHTML='<div class="cd-msg">امشب، شب جشن است! 🥂<br><small>Tonight is the night</small></div>';return}
+    const days=Math.floor(d/864e5),h=Math.floor(d%864e5/36e5),m=Math.floor(d%36e5/6e4),s=Math.floor(d%6e4/1e3);
+    document.getElementById('cd-d').textContent=days;
+    document.getElementById('cd-h').textContent=p(h);
+    document.getElementById('cd-m').textContent=p(m);
+    document.getElementById('cd-s').textContent=p(s);
+  }
+  tick(); setInterval(tick,1000);
+})();
 </script></body></html>
