@@ -31,7 +31,7 @@
 <div class="cal-title">Save the date</div>
 <div class="actions"><a class="action" href="babak-40-birthday.ics" download="Babak-40th-Birthday.ics">📅 Add to Calendar</a><a class="action secondary" id="gcal" target="_blank" rel="noopener" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Babak%27s%2040th%20Birthday%20%C2%B7%20Forty%20%26%20Fabulous&dates=20261101T153000Z%2F20261101T200000Z&location=Velenjak%2C%20Tehran&details=%D8%AA%D9%88%D9%84%D8%AF%20%DB%B4%DB%B0%20%D8%B3%D8%A7%D9%84%DA%AF%DB%8C%20%D8%A8%D8%A7%D8%A8%DA%A9%20%E2%80%94%20%DB%B1%DB%B0%20%D8%A2%D8%A8%D8%A7%D9%86%20%DB%B1%DB%B4%DB%B0%DB%B5%0Ahttps%3A%2F%2Fnshn.ir%2FrbvfFSYxODaZ">Google Calendar ↗</a></div>
 <div class="actions"><a class="action" href="https://nshn.ir/rbvfFSYxODaZ" target="_blank" rel="noopener">Open venue in Neshan ↗</a><button class="action secondary" id="musicBtn" type="button">♫ Play lounge jazz</button><button class="action secondary" id="againBtn" type="button">Close card</button></div>
-<p class="rsvp" dir="rtl">بی‌صبرانه منتظر حضورت هستم ❤️<br><span>اما اگر امکان حضور در این شب ویژه را ندارید، لطفاً از طریق <a id="waLink" href="https://wa.me/989123349487" target="_blank" rel="noopener">واتس‌اپ</a> به من اطلاع دهید. ممنونم.</span></p><div class="actions"><a class="action" id="waYes" href="https://wa.me/989123349487" target="_blank" rel="noopener">✅ I'll be there</a><a class="action secondary" id="waNo" href="https://wa.me/989123349487" target="_blank" rel="noopener">Can't make it</a></div><div class="note">The music starts automatically when you open the envelope.</div></section><div class="footer">LET'S CELEBRATE FOUR DECADES OF GOOD STORIES</div><audio autoplay loop playsinline id="jazz" src="birthday-music.mp3" preload="auto" loop></audio></main>
+<p class="rsvp" dir="rtl">بی‌صبرانه منتظر حضورت هستم ❤️<br><span>اما اگر امکان حضور در این شب ویژه را ندارید، لطفاً از طریق <a id="waLink" href="https://wa.me/989123349487" target="_blank" rel="noopener">واتس‌اپ</a> به من اطلاع دهید. ممنونم.</span></p><div class="actions"><a class="action" id="waYes" href="https://wa.me/989123349487" target="_blank" rel="noopener">✅ I'll be there</a><a class="action secondary" id="waNo" href="https://wa.me/989123349487" target="_blank" rel="noopener">❌ Can't make it</a></div><div class="note">The music starts automatically when you open the envelope.</div></section><div class="footer">LET'S CELEBRATE FOUR DECADES OF GOOD STORIES</div><audio autoplay loop playsinline id="jazz" src="birthday-music.mp3" preload="auto" loop></audio></main>
 <script>window.GUEST_NAME="سعید و هدی عزیز";</script>
 <script>
 const stage=document.getElementById('stage'),envelope=document.getElementById('envelope'),jazz=document.getElementById('jazz'),musicBtn=document.getElementById('musicBtn');
@@ -95,8 +95,8 @@ document.addEventListener('visibilitychange',()=>{if(document.hidden)jazz.pause(
   const name=name0.replace(/\s+(عزیز|جان|گرامی)$/,'').trim();
   const plural=/\s(و|&)\s/.test(' '+name+' ');
   const who=name?(name+(plural?' هستیم':' هستم')+'. '):'';
-  const yes='سلام بابک جان 🥂\n'+who+'دعوتنامه‌ات رو دیدم، با کمال میل '+(plural?'میایم':'میام')+'! بی‌صبرانه منتظر اون شبم 🎂';
-  const no='سلام بابک جان ❤️\n'+who+'خیلی دلم می‌خواست باشم ولی متأسفانه '+(plural?'نمی‌تونیم بیایم':'نمی‌تونم بیام')+'. ممنون که منو دعوت کردی، تولدت مبارک 🌹';
+  const yes='سلام بابک جان 🥂\n'+'دعوتنامه‌ات رو دیدم، با کمال میل '+(plural?'میایم':'میام')+'! 🎂';
+  const no='سلام بابک جان ❤️\n'+'دلم می‌خواست باشم ولی متأسفانه '+(plural?'نمی‌تونیم بیایم':'نمی‌تونم بیایم')+'. تولدت مبارک 🌹';
   const url=t=>'https://wa.me/'+NUM+'?text='+encodeURIComponent(t);
   const set=(id,t)=>{const e=document.getElementById(id);if(e)e.href=url(t)};
   set('waYes',yes);set('waNo',no);set('waLink',no);
